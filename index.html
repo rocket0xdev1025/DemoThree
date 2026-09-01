@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo3x | $DEMOTHREE — Bold Trading Energy on Robinhood</title>
+  <meta name="description" content="Demo3x brings bold trading energy, viral memes, and fearless vibes straight to Robinhood. Buy $DEMOTHREE with Robinhood ETH." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta property="og:title" content="Demo3x | $DEMOTHREE" />
+  <meta property="og:description" content="Bold trading energy, viral memes, and fearless vibes straight to Robinhood." />
+  <meta property="og:image" content="banner.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="banner.jpg" />
+  <link rel="preload" as="image" href="banner.jpg" />
+  <link rel="preload" as="image" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Oxanium:wght@500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nv: {
+              green: "#76B900",
+              lime: "#A4E800",
+              dim: "#4A7600",
+              ink: "#050505",
+              panel: "#0C0C0C",
+              steel: "#1A1A1A",
+              mute: "#8F8F8F",
+              snow: "#F4F4F4",
+            },
+          },
+          fontFamily: {
+            display: ["Oxanium", "system-ui", "sans-serif"],
+            sans: ["Sora", "system-ui", "sans-serif"],
+            mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(118,185,0,0.35)",
+            "glow-sm": "0 0 18px rgba(118,185,0,0.45)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --nv: #76B900;
+      --nv-lime: #A4E800;
+      --ink: #050505;
+    }
+    html, body { background: #050505; }
+    body {
+      font-family: Sora, system-ui, sans-serif;
+      color: #F4F4F4;
+      overflow-x: hidden;
+    }
+    ::selection { background: #76B900; color: #050505; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb {
+      background: #76B900;
+      border: 2px solid #050505;
+    }
+
+    .nv-fixed {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(180deg, rgba(5,5,5,0.78) 0%, rgba(5,5,5,0.88) 45%, rgba(0,0,0,0.96) 100%),
+        url("nvidia-bg.jpg") center / cover no-repeat;
+    }
+    .circuit-veil {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(118,185,0,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(118,185,0,0.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at 70% 20%, #000 20%, transparent 75%);
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      pointer-events: none;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,0.55) 100%);
+    }
+
+    .nv-flag {
+      display: inline-block;
+      width: 14px;
+      height: 22px;
+      background: #76B900;
+      transform: skewX(-18deg);
+      box-shadow: 0 0 16px rgba(118,185,0,0.7);
+      flex-shrink: 0;
+    }
+    .nv-flag-lg {
+      width: 22px;
+      height: 54px;
+    }
+
+    .nv-card {
+      position: relative;
+      background:
+        linear-gradient(165deg, rgba(118,185,0,0.08), rgba(12,12,12,0.92) 38%);
+      border: 1px solid rgba(118,185,0,0.28);
+      box-shadow:
+        inset 0 1px 0 rgba(118,185,0,0.12),
+        0 24px 60px rgba(0,0,0,0.45);
+      backdrop-filter: blur(14px);
+    }
+    .nv-card .sq {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #76B900;
+      box-shadow: 0 0 8px rgba(118,185,0,0.8);
+      z-index: 2;
+    }
+    .nv-card .sq.tl { top: -1px; left: -1px; }
+    .nv-card .sq.tr { top: -1px; right: -1px; }
+    .nv-card .sq.bl { bottom: -1px; left: -1px; }
+    .nv-card .sq.br { bottom: -1px; right: -1px; }
+
+    .btn-buy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      background: linear-gradient(180deg, #A4E800 0%, #76B900 55%, #5A9100 100%);
+      color: #050505;
+      font-family: Oxanium, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid #A4E800;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 0 22px rgba(118,185,0,0.35);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.4) inset, 0 0 32px rgba(118,185,0,0.6);
+    }
+    .btn-chart {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      background: rgba(5,5,5,0.55);
+      color: #76B900;
+      font-family: Oxanium, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(118,185,0,0.55);
+      transition: background .18s ease, box-shadow .18s ease, color .18s ease;
+    }
+    .btn-chart:hover {
+      background: rgba(118,185,0,0.12);
+      box-shadow: 0 0 22px rgba(118,185,0,0.25);
+      color: #A4E800;
+    }
+
+    .logo-float {
+      animation: float 5.2s ease-in-out infinite;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,0.55)) drop-shadow(0 0 28px rgba(118,185,0,0.45));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .scan {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .scan::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #76B900, transparent);
+      box-shadow: 0 0 18px #76B900;
+      animation: scan 5.5s linear infinite;
+      opacity: 0.55;
+    }
+    @keyframes scan {
+      0% { top: -4%; }
+      100% { top: 104%; }
+    }
+
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      border-block: 1px solid rgba(118,185,0,0.28);
+      background: rgba(5,5,5,0.82);
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .hud-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #76B900;
+    }
+
+    .spark {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #A4E800;
+      box-shadow: 0 0 10px 3px rgba(118,185,0,0.85);
+      pointer-events: none;
+      animation: spark 3.6s ease-in-out infinite;
+    }
+    @keyframes spark {
+      0%, 100% { opacity: 0.15; transform: scale(0.6); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #76B900;
+      color: #050505;
+      font-family: Oxanium, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      font-size: 12px;
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      box-shadow: 0 0 24px rgba(118,185,0,0.5);
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    #dexscreener-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 125%;
+    }
+    @media (min-width: 1400px) {
+      #dexscreener-embed { padding-bottom: 65%; }
+    }
+    #dexscreener-embed iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: 0;
+    }
+
+    .spec-cell + .spec-cell {
+      border-left: 1px solid rgba(118,185,0,0.22);
+    }
+    @media (max-width: 767px) {
+      .spec-cell + .spec-cell { border-left: 0; border-top: 1px solid rgba(118,185,0,0.22); }
+    }
+  </style>
+</head>
+<body>
+  <div class="nv-fixed" aria-hidden="true"></div>
+  <div class="circuit-veil" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div id="toast" role="status">Copied CA</div>
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] bg-nv-green text-nv-ink px-3 py-2 font-display font-bold">Skip to content</a>
+
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-nv-green/25 bg-nv-ink/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-[72px] flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 min-w-0">
+        <img src="logo.png" alt="Demo3x logo" class="w-10 h-10 object-contain" />
+        <span class="nv-flag hidden sm:inline-block"></span>
+        <span class="font-display font-extrabold tracking-[0.14em] text-lg">DEMO3X</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 font-display font-semibold tracking-[0.12em] text-sm uppercase text-nv-snow/80">
+        <a href="#about" class="hover:text-nv-green transition">About</a>
+        <a href="#buy" class="hover:text-nv-green transition">How to Buy</a>
+        <a href="#chart" class="hover:text-nv-green transition">Chart</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <button type="button" onclick="copyCA()" class="hidden xl:inline-flex items-center gap-2 border border-nv-green/35 bg-nv-ink/70 px-3 py-2 text-xs hover:border-nv-green transition">
+          <span class="hud-label">CA</span>
+          <span class="font-mono tracking-wider text-nv-green" data-ca>TBA</span>
+          <svg class="w-3.5 h-3.5 text-nv-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <a href="https://x.com/Demo3xX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-nv-green/40 bg-black p-2 hover:border-nv-green hover:shadow-glow-sm transition" aria-label="Demo3x on X">
+          <img src="x.png" alt="" class="w-full h-full object-contain" />
+        </a>
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-5 py-2.5 text-sm">Buy Now</a>
+      </div>
+
+      <button id="menuBtn" type="button" class="lg:hidden w-11 h-11 border border-nv-green/40 bg-nv-ink/50 flex items-center justify-center" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6 text-nv-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-nv-green/20 bg-nv-ink/95 backdrop-blur-xl">
+      <div class="px-5 py-5 flex flex-col gap-1 font-display font-bold tracking-[0.12em] uppercase">
+        <a href="#about" class="py-3 border-b border-nv-green/15">About</a>
+        <a href="#buy" class="py-3 border-b border-nv-green/15">How to Buy</a>
+        <a href="#chart" class="py-3 border-b border-nv-green/15">Chart</a>
+        <button type="button" onclick="copyCA()" class="text-left py-3 border-b border-nv-green/15">
+          Copy CA · <span data-ca class="font-mono text-nv-green">TBA</span>
+        </button>
+        <a href="https://x.com/Demo3xX" target="_blank" rel="noopener noreferrer" class="py-3 flex items-center gap-2">
+          <img src="x.png" alt="" class="w-5 h-5 bg-black" /> Follow on X
+        </a>
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-5 py-3 text-center mt-2">Buy Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="relative min-h-[100svh] flex flex-col">
+      <div class="relative flex-1 flex items-center overflow-hidden">
+        <img src="banner.jpg" alt="Demo3x stacked coins floating in a sunlit forest" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-b from-nv-ink/80 via-nv-ink/35 to-nv-ink"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-nv-ink/70 via-transparent to-nv-ink/70"></div>
+        <div class="scan"></div>
+        <span class="spark" style="left:14%; top:24%; animation-delay:.2s"></span>
+        <span class="spark" style="left:78%; top:18%; animation-delay:1.1s"></span>
+        <span class="spark" style="left:22%; top:62%; animation-delay:2.2s"></span>
+        <span class="spark" style="left:88%; top:48%; animation-delay:3s"></span>
+        <span class="spark" style="left:64%; top:72%; animation-delay:1.6s"></span>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-10 md:pt-32 md:pb-14">
+          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 border border-nv-green/40 bg-nv-ink/60 px-3 py-1.5 mb-5">
+                <span class="w-1.5 h-1.5 bg-nv-green shadow-glow-sm"></span>
+                <span class="hud-label">Robinhood Chain · ETH · Core Online</span>
+              </div>
+
+              <h1 class="font-display font-extrabold leading-[0.86] tracking-[0.04em] text-[clamp(3.4rem,11vw,8.2rem)]">
+                <span class="inline-flex items-center gap-3 sm:gap-4">
+                  <span class="nv-flag nv-flag-lg"></span>
+                  DEMO<span class="text-nv-green">3</span>X
+                </span>
+              </h1>
+              <p class="mt-2 font-display font-bold text-nv-green text-[clamp(1.4rem,3.4vw,2.4rem)] tracking-[0.28em]">$DEMOTHREE</p>
+              <p class="mt-5 max-w-xl text-[17px] sm:text-lg leading-relaxed text-nv-snow/85">
+                Demo3x brings bold trading energy, viral memes, and fearless vibes straight to Robinhood!
+              </p>
+
+              <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-8 py-3.5 text-base">Buy Now</a>
+                <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" data-chart class="btn-chart px-8 py-3.5 text-base">Chart</a>
+              </div>
+
+              <button type="button" onclick="copyCA()" class="mt-5 group w-full sm:w-auto inline-flex items-center justify-between gap-4 border border-nv-green/30 bg-nv-ink/70 px-4 py-3 hover:border-nv-green transition">
+                <span class="hud-label">Contract</span>
+                <span class="font-mono text-sm sm:text-base tracking-wider text-nv-green" data-ca>TBA</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-display font-extrabold tracking-[0.14em] uppercase text-nv-snow/80 group-hover:text-nv-green">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"/></svg>
+                  Copy
+                </span>
+              </button>
+            </div>
+
+            <div class="relative flex justify-center">
+              <div class="absolute inset-8 rounded-full bg-nv-green/20 blur-3xl"></div>
+              <img src="logo.png" alt="Demo3x stacked NVIDIA-green coins" class="logo-float relative w-[260px] sm:w-[340px] lg:w-[400px] object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GPU spec strip -->
+      <div class="relative z-10 border-y border-nv-green/30 bg-nv-ink/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
+          <div class="spec-cell px-5 py-4">
+            <div class="hud-label">Ticker</div>
+            <div class="font-display font-extrabold tracking-widest mt-1">DEMOTHREE</div>
+          </div>
+          <div class="spec-cell px-5 py-4">
+            <div class="hud-label">Chain</div>
+            <div class="font-display font-extrabold tracking-widest mt-1">ROBINHOOD</div>
+          </div>
+          <div class="spec-cell px-5 py-4">
+            <div class="hud-label">Pair</div>
+            <div class="font-display font-extrabold tracking-widest mt-1">ETH / $DEMOTHREE</div>
+          </div>
+          <div class="spec-cell px-5 py-4 flex items-center justify-between gap-3">
+            <div>
+              <div class="hud-label">Contract</div>
+              <div class="font-mono font-semibold tracking-wider mt-1 text-nv-green" data-ca>TBA</div>
+            </div>
+            <button type="button" onclick="copyCA()" class="btn-chart px-3 py-2 text-[11px]">Copy CA</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="relative z-10 marquee" aria-hidden="true">
+      <div class="marquee-track font-display font-extrabold tracking-[0.28em] text-sm py-3 text-nv-green">
+        <span class="px-6">$DEMOTHREE</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">BOLD TRADING ENERGY</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">VIRAL MEMES</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">FEARLESS VIBES</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">ROBINHOOD CHAIN</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">POWERED BY ETH</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">DEMO3X CORE</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">$DEMOTHREE</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">BOLD TRADING ENERGY</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">VIRAL MEMES</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">FEARLESS VIBES</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">ROBINHOOD CHAIN</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">POWERED BY ETH</span><span class="text-nv-snow/40">◆</span>
+        <span class="px-6">DEMO3X CORE</span><span class="text-nv-snow/40">◆</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="relative z-10 py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-end justify-between gap-6 mb-12">
+          <div>
+            <p class="hud-label mb-3">01 — About the Core</p>
+            <h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-wide">
+              Three discs. <span class="text-nv-green">One green eye.</span>
+            </h2>
+          </div>
+          <span class="hidden md:inline-flex nv-flag nv-flag-lg"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div class="nv-card p-1">
+            <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+            <img src="banner.jpg" alt="Demo3x banner" class="w-full h-full min-h-[280px] object-cover" />
+          </div>
+
+          <div class="flex flex-col gap-5">
+            <p class="text-lg leading-relaxed text-nv-snow/85">
+              Demo3x brings bold trading energy, viral memes, and fearless vibes straight to Robinhood!
+              $DEMOTHREE is the stacked-core meme of Robinhood Chain — rendered in NVIDIA green, launched on ETH, built for traders who hit buy before the frame even finishes.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-4">
+              <article class="nv-card p-5">
+                <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+                <p class="hud-label mb-2">Core 01</p>
+                <h3 class="font-display font-extrabold text-xl">Bold Trading</h3>
+                <p class="mt-2 text-sm text-nv-mute leading-relaxed">High-clock energy. No lag. Swap ETH and stay in the trade.</p>
+              </article>
+              <article class="nv-card p-5">
+                <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+                <p class="hud-label mb-2">Core 02</p>
+                <h3 class="font-display font-extrabold text-xl">Viral Memes</h3>
+                <p class="mt-2 text-sm text-nv-mute leading-relaxed">Stacked coins. Green eye. The kind of logo that prints itself.</p>
+              </article>
+              <article class="nv-card p-5">
+                <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+                <p class="hud-label mb-2">Core 03</p>
+                <h3 class="font-display font-extrabold text-xl">Fearless Vibes</h3>
+                <p class="mt-2 text-sm text-nv-mute leading-relaxed">Straight to Robinhood. No permission. Full send.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="buy" class="relative z-10 py-20 md:py-28 border-y border-nv-green/20 bg-black/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="mb-12 max-w-2xl">
+          <p class="hud-label mb-3">02 — How to Buy</p>
+          <h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-wide">
+            Load $DEMOTHREE with <span class="text-nv-green">Robinhood ETH</span>
+          </h2>
+          <p class="mt-4 text-nv-snow/75 leading-relaxed">
+            Four cores. One swap. Buy $DEMOTHREE on Uniswap using ETH on Robinhood Chain.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <article class="nv-card overflow-hidden flex flex-col">
+            <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+            <div class="relative aspect-square overflow-hidden">
+              <img src="step-1.jpg" alt="Demo3x coins hovering over a hardware wallet" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 font-display font-extrabold text-nv-ink bg-nv-green px-2 py-1 text-sm tracking-widest">01</span>
+            </div>
+            <div class="p-5 flex-1">
+              <h3 class="font-display font-extrabold text-xl tracking-wide">Power on a wallet</h3>
+              <p class="mt-2 text-sm leading-relaxed text-nv-mute">
+                Open Robinhood Wallet or MetaMask. Add Robinhood Chain — Chain ID <span class="text-nv-green font-mono">4663</span>, symbol ETH. This is your launch pad.
+              </p>
+            </div>
+          </article>
+
+          <article class="nv-card overflow-hidden flex flex-col">
+            <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+            <div class="relative aspect-square overflow-hidden">
+              <img src="step-2.jpg" alt="Demo3x coins beside a glowing Ethereum crystal" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 font-display font-extrabold text-nv-ink bg-nv-green px-2 py-1 text-sm tracking-widest">02</span>
+            </div>
+            <div class="p-5 flex-1">
+              <h3 class="font-display font-extrabold text-xl tracking-wide">Load Robinhood ETH</h3>
+              <p class="mt-2 text-sm leading-relaxed text-nv-mute">
+                Fund the wallet with ETH on Robinhood Chain. You need ETH to swap into $DEMOTHREE and to cover gas. No ETH, no lift-off.
+              </p>
+            </div>
+          </article>
+
+          <article class="nv-card overflow-hidden flex flex-col">
+            <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+            <div class="relative aspect-square overflow-hidden">
+              <img src="step-3.jpg" alt="Demo3x coins inside a glowing hexagonal swap portal" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 font-display font-extrabold text-nv-ink bg-nv-green px-2 py-1 text-sm tracking-widest">03</span>
+            </div>
+            <div class="p-5 flex-1">
+              <h3 class="font-display font-extrabold text-xl tracking-wide">Lock the contract</h3>
+              <p class="mt-2 text-sm leading-relaxed text-nv-mute">
+                Open Uniswap, switch to Robinhood Chain, and paste the $DEMOTHREE CA. Never buy from a ticker search — copy it from this site.
+              </p>
+              <button type="button" onclick="copyCA()" class="mt-3 hud-label hover:text-nv-lime transition">Copy available CA →</button>
+            </div>
+          </article>
+
+          <article class="nv-card overflow-hidden flex flex-col">
+            <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+            <div class="relative aspect-square overflow-hidden">
+              <img src="step-4.jpg" alt="Demo3x coins launching on a column of green energy" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 font-display font-extrabold text-nv-ink bg-nv-green px-2 py-1 text-sm tracking-widest">04</span>
+            </div>
+            <div class="p-5 flex-1">
+              <h3 class="font-display font-extrabold text-xl tracking-wide">Swap &amp; fearless HODL</h3>
+              <p class="mt-2 text-sm leading-relaxed text-nv-mute">
+                Swap ETH for $DEMOTHREE, confirm in your wallet, and hold. Bold energy. Viral memes. Fearless vibes.
+              </p>
+              <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="mt-3 inline-block hud-label hover:text-nv-lime transition">Buy Now on Uniswap →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-8 py-3.5">Buy Now</a>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" data-chart class="btn-chart px-8 py-3.5">Chart</a>
+          <button type="button" onclick="copyCA()" class="btn-chart px-8 py-3.5">Copy CA</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="relative z-10 py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+          <div>
+            <p class="hud-label mb-3">03 — Display Output</p>
+            <h2 class="font-display font-extrabold text-4xl sm:text-5xl tracking-wide">Live <span class="text-nv-green">chart</span></h2>
+            <p class="mt-3 text-nv-snow/70">Dexscreener feed for $DEMOTHREE on Robinhood Chain.</p>
+          </div>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" data-chart class="btn-chart px-6 py-3 w-fit">Open Dexscreener</a>
+        </div>
+
+        <div class="nv-card p-2 sm:p-3">
+          <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+          <div class="flex items-center justify-between px-3 py-2 border-b border-nv-green/20 mb-2">
+            <span class="hud-label">Demo3x · $DEMOTHREE / ETH</span>
+            <span class="hud-label text-nv-mute">theme: dark</span>
+          </div>
+          <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
+          <div id="dexscreener-embed">
+            <iframe title="Dexscreener chart for Demo3x" src="https://dexscreener.com/robinhood/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="relative z-10 pb-20 md:pb-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="nv-card overflow-hidden">
+          <span class="sq tl"></span><span class="sq tr"></span><span class="sq bl"></span><span class="sq br"></span>
+          <div class="grid lg:grid-cols-2">
+            <div class="p-8 sm:p-12 flex flex-col justify-center">
+              <p class="hud-label mb-3">04 — Full Send</p>
+              <h2 class="font-display font-extrabold text-4xl tracking-wide">Join the <span class="text-nv-green">core</span></h2>
+              <p class="mt-4 text-nv-snow/75 leading-relaxed max-w-md">
+                Demo3x brings bold trading energy, viral memes, and fearless vibes straight to Robinhood. Copy the CA. Hit Buy Now. Render the bags.
+              </p>
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-7 py-3">Buy Now</a>
+                <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" data-chart class="btn-chart px-7 py-3">Chart</a>
+                <a href="https://x.com/Demo3xX" target="_blank" rel="noopener noreferrer" class="btn-chart px-7 py-3">
+                  <img src="x.png" alt="" class="w-4 h-4 object-contain" />
+                  Follow
+                </a>
+              </div>
+            </div>
+            <div class="relative min-h-[260px] bg-nv-ink">
+              <img src="nvidia-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-70" />
+              <div class="absolute inset-0 bg-gradient-to-l from-transparent to-nv-ink/40"></div>
+              <img src="logo.png" alt="" class="logo-float absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 sm:w-52" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 border-t border-nv-green/25 bg-nv-ink/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="" class="w-9 h-9 object-contain" />
+        <span class="nv-flag"></span>
+        <div>
+          <div class="font-display font-extrabold tracking-[0.16em]">DEMO3X</div>
+          <div class="hud-label">$DEMOTHREE · Robinhood Chain</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://x.com/Demo3xX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-nv-green/40 bg-black p-2" aria-label="X">
+          <img src="x.png" alt="" class="w-full h-full object-contain" />
+        </a>
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" data-buy class="btn-buy px-5 py-2 text-xs">Buy Now</a>
+        <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" data-chart class="btn-chart px-5 py-2 text-xs">Chart</a>
+      </div>
+    </div>
+    <p class="max-w-7xl mx-auto px-4 sm:px-6 pb-10 text-[11px] leading-relaxed text-nv-mute max-w-4xl">
+      $DEMOTHREE is a meme token on Robinhood Chain. Nothing on this site is financial advice. Crypto is volatile — you can lose everything. Demo3x is not affiliated with NVIDIA Corporation or Robinhood Markets, Inc. Always verify the contract address before you swap.
+    </p>
+  </footer>
+
+  <script>
+    const CONFIG = {
+      ca: "TBA",
+      buy: "https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA",
+      chart: "https://dexscreener.com/robinhood/TBA",
+    };
+
+    function shortCA(ca) {
+      if (!ca || ca.length <= 14) return ca;
+      return ca.slice(0, 6) + "…" + ca.slice(-4);
+    }
+
+    function hydrate() {
+      document.querySelectorAll("[data-ca]").forEach((el) => {
+        el.textContent = el.classList.contains("font-mono") && el.closest("nav, header, .spec-cell, button")
+          ? shortCA(CONFIG.ca)
+          : CONFIG.ca;
+      });
+      document.querySelectorAll("[data-buy]").forEach((el) => { el.href = CONFIG.buy; });
+      document.querySelectorAll("[data-chart]").forEach((el) => { el.href = CONFIG.chart; });
+    }
+
+    function copyCA() {
+      const value = CONFIG.ca;
+      const done = () => {
+        const t = document.getElementById("toast");
+        t.textContent = "Copied " + shortCA(value);
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(value).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+      function fallback() {
+        const ta = document.createElement("textarea");
+        ta.value = value;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        ta.remove();
+        done();
+      }
+    }
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("hidden") === false;
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    mobileMenu.querySelectorAll("a, button").forEach((el) => {
+      el.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    hydrate();
+  </script>
+</body>
+</html>
